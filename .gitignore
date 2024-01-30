@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+.direnv/
+data/
+/etc/
+/lib/
+/lib64
+/bin/
+/share/
+/Untitled.ipynb
