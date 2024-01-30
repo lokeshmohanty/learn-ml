@@ -1,14 +1,12 @@
-# save this as shell.nix
-# { pkgs ? import <nixpkgs> {}}:
 { pkgs ? import <nixpkgs> {}}:
 
 pkgs.mkShell {
   packages = with pkgs.python311Packages; [ 
     pip jupyter # setuptools
-    dvc mlflow
-    equinox # flax
+    # dvc mlflow
+    # equinox flax
     gymnasium pygame
-    tensorflow # tensorflow-datasets
+    # tensorflow tensorflow-datasets
     pydantic rich
     torch torchvision
   ];

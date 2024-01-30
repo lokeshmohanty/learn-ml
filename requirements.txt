@@ -1,0 +1,5 @@
+jupyterlab
+tensorflow_datasets
+"flax[all]"
+equinox
+clu
