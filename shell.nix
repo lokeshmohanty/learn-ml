@@ -2,13 +2,22 @@
 
 pkgs.mkShell {
   packages = with pkgs.python311Packages; [ 
-    pip jupyter # setuptools
-    # dvc mlflow
-    # equinox flax
+    # common
+    pip jupyter numpy pandas matplotlib
+
+    # rl
     gymnasium pygame
+
+    # jax
+    # equinox flax
     # tensorflow tensorflow-datasets
-    pydantic rich
+
+    # pytorch
     torch torchvision
+
+    # others
+    # dvc mlflow
+    pydantic rich
   ];
   shellHook = ''
     export PYGAME_DETECT_AVX2=1
