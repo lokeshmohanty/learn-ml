@@ -19,8 +19,8 @@ pkgs.mkShell {
     # dvc mlflow
     pydantic rich
   ];
-  shellHook = ''
-    export PYGAME_DETECT_AVX2=1
-    source bin/activate
-  '';
+  # shellHook = ''
+  #   export PYGAME_DETECT_AVX2=1
+  #   source bin/activate
+  # '';
 }

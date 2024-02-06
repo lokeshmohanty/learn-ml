@@ -1,5 +1,19 @@
+# common
 jupyterlab
+numpy
+pandas
+matplotlib
+
+# jax
 tensorflow_datasets
 "flax[all]"
 equinox
 clu
+
+# pytorch
+torch
+torchvision
+
+# rl
+gymnasium
+pygame
