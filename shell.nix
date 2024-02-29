@@ -4,6 +4,7 @@ pkgs.mkShell {
   packages = with pkgs.python311Packages; [ 
     # common
     pip jupyter numpy pandas matplotlib
+    seaborn tqdm
 
     # rl
     gymnasium pygame
@@ -19,8 +20,8 @@ pkgs.mkShell {
     # dvc mlflow
     pydantic rich
   ];
-  # shellHook = ''
-  #   export PYGAME_DETECT_AVX2=1
-  #   source bin/activate
-  # '';
+  shellHook = ''
+    # export PYGAME_DETECT_AVX2=1
+    # source bin/activate
+  '';
 }

@@ -3,6 +3,8 @@ jupyterlab
 numpy
 pandas
 matplotlib
+seaborn
+tqdm
 
 # jax
 tensorflow_datasets
