@@ -7,3 +7,6 @@ data/
 /bin/
 /share/
 /Untitled.ipynb
+__pycache__/
+*.pt
+*.pth
