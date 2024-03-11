@@ -2,7 +2,11 @@
 
 ## Setup
 
-I am using `shell.nix` to setup the dependencies. To install dependencies by `pip`,
-run `pip install -r requirements.txt`.
+### Using python pip
 
+To install dependencies by `pip`, run `pip install -r requirements.txt`.
+
+### Using nix
+
+I am currently using `shell.nix`/`flake.nix` to setup the dependencies. 
 

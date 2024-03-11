@@ -6,8 +6,11 @@ pkgs.mkShell {
     pip jupyter numpy pandas matplotlib
     seaborn tqdm
 
+    # utilities
+    jupytext 
+
     # rl
-    gymnasium pygame
+    gymnasium pygame pybox2d
 
     # jax
     # equinox flax

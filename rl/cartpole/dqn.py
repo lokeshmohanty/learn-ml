@@ -98,8 +98,8 @@ def optimize_model(memory):
 
     next_state_values = torch.zeros(BATCH_SIZE, device=device)
     with torch.no_grad():
-        next_state_values[non_final_mask] = policy(non_final_next_states).max(1).values
-        # next_state_values[non_final_mask] = target(non_final_next_states).max(1).values
+        # next_state_values[non_final_mask] = policy(non_final_next_states).max(1).values
+        next_state_values[non_final_mask] = target(non_final_next_states).max(1).values
 
     expected_q_values = (next_state_values * GAMMA) + reward_batch
     criterion = nn.SmoothL1Loss()
