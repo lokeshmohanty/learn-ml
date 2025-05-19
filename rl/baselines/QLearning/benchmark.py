@@ -88,7 +88,7 @@ params = Params(
     action_size=None,
     state_size=None,
     proba_frozen=0.9,
-    savefig_folder=Path("data/"),
+    savefig_folder=Path("../results/"),
 )
 params
 

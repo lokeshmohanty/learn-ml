@@ -84,7 +84,7 @@ def plot(q, env):
         spine.set_linewidth(0.7)
         spine.set_color("black")
     img_title = f"q_{map_size}x{map_size}.png"
-    fig.savefig(Path('../data') / img_title, bbox_inches="tight")
+    fig.savefig(Path('../results') / img_title, bbox_inches="tight")
     plt.show()
 
 def plot_rewards(rewards_df, steps_df):
@@ -108,7 +108,7 @@ def plot_rewards(rewards_df, steps_df):
 
     fig.tight_layout()
     img_title = "rewards.png"
-    fig.savefig(Path('../data') / img_title, bbox_inches="tight")
+    fig.savefig(Path('../results') / img_title, bbox_inches="tight")
     plt.show()
 
 
@@ -116,9 +116,9 @@ def plot_rewards(rewards_df, steps_df):
 
 ## Main
 if __name__ == "__main__":
-    Path('../data').mkdir(exist_ok=True)
-    filename_ql = '../data/ql.pt'
-    filename_sarsa = '../data/sarsa.pt'
+    Path('../results').mkdir(exist_ok=True)
+    filename_ql = '../results/ql.pt'
+    filename_sarsa = '../results/sarsa.pt'
 
     useCache = False
     if "useCache" in sys.argv[1:]:
