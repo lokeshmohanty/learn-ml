@@ -4,9 +4,15 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 import seaborn as sns
 from math import sqrt
-from tqdm import tqdm
+from clearml import Task
 
 from base import interact
+
+task = Task.init(
+    project_name='PhD Thesis/General Algorithms/FrozenLake', 
+    task_name='QLearning-SARSA', 
+    auto_connect_frameworks={'tensorboard': True, 'matplotlib': True, 'pytorch': True}
+)
 
 class QLearning():
     def __init__(self, alpha=0.8, gamma=0.95):
@@ -78,14 +84,41 @@ def plot(q, env):
         spine.set_linewidth(0.7)
         spine.set_color("black")
     img_title = f"q_{map_size}x{map_size}.png"
-    fig.savefig(Path('data') / img_title, bbox_inches="tight")
+    fig.savefig(Path('../data') / img_title, bbox_inches="tight")
     plt.show()
+
+def plot_rewards(rewards_df, steps_df):
+    fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(15, 5))
+    sns.lineplot(data=rewards_df,
+                 x="Episodes",
+                 y="cum_rewards",
+                 hue="map_size",
+                 ax=ax[0])
+    ax[0].set(ylabel="Cumulated rewards")
+
+    sns.lineplot(data=steps_df,
+                 x="Episodes",
+                 y="Steps",
+                 hue="map_size",
+                 ax=ax[1])
+    ax[1].set(ylabel="Averaged steps number")
+
+    for axi in ax:
+        axi.legend(title="map size")
+
+    fig.tight_layout()
+    img_title = "rewards.png"
+    fig.savefig(Path('../data') / img_title, bbox_inches="tight")
+    plt.show()
+
+
+# plot_steps_and_rewards(res_all, st_all)
 
 ## Main
 if __name__ == "__main__":
-    Path('data').mkdir(exist_ok=True)
-    filename_ql = 'data/ql.pt'
-    filename_sarsa = 'data/sarsa.pt'
+    Path('../data').mkdir(exist_ok=True)
+    filename_ql = '../data/ql.pt'
+    filename_sarsa = '../data/sarsa.pt'
 
     useCache = False
     if "useCache" in sys.argv[1:]:

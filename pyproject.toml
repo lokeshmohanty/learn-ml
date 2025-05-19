@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "base"
+version = "0.1.0"
+description = ""
+authors = ["Lokesh Mohanty <me.lokeshmohanty@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.4"
+pandas = "^2.2.1"
+matplotlib = "^3.8.3"
+seaborn = "^0.13.2"
+tqdm = "^4.66.2"
+gymnasium = "1.0.0a1"
+torch = "^2.2.1"
+pettingzoo = {extras = ["sisl"], version = "^1.24.3"}
+momaland = {extras = ["all"], version = "^0.0.2"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+poetry = "poetry.console.application:main"

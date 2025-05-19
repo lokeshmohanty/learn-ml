@@ -86,7 +86,7 @@ def optimize_model(memory):
     transitions = memory.sample(BATCH_SIZE)
     batch = Transition(*zip(*transitions))
 
-    non_final_mask = torch.tensor(tuple([s is not None for s in batch.next_state]),
+    non_final_mask = torch.tensor([s is not None for s in batch.next_state],
                                   device=device,
                                   dtype=torch.bool)
     non_final_next_states = torch.cat([s for s in batch.next_state if s is not None])
@@ -160,7 +160,7 @@ def plot_durations(durations, show_result=False):
 # training Loop
 from itertools import count
 
-n_episodes = 500                # 600
+n_episodes = 1000                # 600
 durations = []
 
 for i in range(n_episodes):
@@ -191,35 +191,14 @@ for i in range(n_episodes):
 
         if done:
             durations.append(t+1)
+            # print(durations)
             plot_durations(durations)
             break
 
 print('Complete')
+print('durations')
 plot_durations(durations, show_result=True)
 plt.ioff()
+plt.savefig("durations1.png")
 plt.show()
-
-# %%
-
-torch.save(policy.state_dict(), "policy.pt")
-torch.save(target.state_dict(), "target.pt")
-
-# %%
-env1 = gym.make("CartPole-v1", render_mode="human")
-
-s, _ = env1.reset()
-policy = DQN(len(s), env1.action_space.n)
-policy.load_state_dict(torch.load("policy.pt"))
-policy.eval()
-
-duration = 0
-for _ in range(500):
-    s = torch.tensor(s, dtype=torch.float32, device=device).unsqueeze(0)
-    a = epsilon_greedy(env1, policy, s)
-    s, reward, truncated, terminated, _ = env1.step(a.item())
-    if truncated or terminated:
-        print("Game Over: ", duration)
-        s, _ = env1.reset()
-        duration = 0
-    duration += 1
 
