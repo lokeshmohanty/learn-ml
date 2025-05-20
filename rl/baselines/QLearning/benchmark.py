@@ -4,7 +4,6 @@ Frozenlake benchmark
 
 """
 
-
 # %%
 # In this post we'll compare a bunch of different map sizes on the
 # `FrozenLake <https://gymnasium.farama.org/environments/toy_text/frozen_lake/>`__
@@ -44,9 +43,10 @@ from clearml import Task
 
 
 task = Task.init(
-    project_name='PhD Thesis/General Algorithms/FrozenLake', 
-    task_name='QLearning-Benchmark', 
-    auto_connect_frameworks={'tensorboard': True, 'matplotlib': True, 'pytorch': True}
+    project_name="PhD Thesis/General Algorithms",
+    task_name="QLearning-Benchmark",
+    tags=["env:frozenlake-v1", "rl"],
+    auto_connect_frameworks={"tensorboard": True, "matplotlib": True, "pytorch": True},
 )
 
 

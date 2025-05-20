@@ -7,19 +7,11 @@ from collections import namedtuple, deque
 import torch
 from torch import nn, optim
 import torch.nn.functional as F
-from clearml import Task
+from clearml import Task, TaskTypes
 
 from torch.utils.tensorboard import SummaryWriter
 
-writer = SummaryWriter()
-
 device = "cuda" if torch.cuda.is_available() else "cpu"
-
-task = Task.init(
-    project_name="PhD Thesis/General Algorithms/CartPole",
-    task_name="DQN",
-    auto_connect_frameworks={"tensorboard": True, "matplotlib": True, "pytorch": True},
-)
 
 # %%
 # Training with Experience Replay Memory
@@ -77,6 +69,15 @@ EPS_START = 0.9
 EPS_END = 0.05
 EPS_DECAY = 1000
 
+
+writer = SummaryWriter()
+task = Task.init(
+    project_name="PhD Thesis/General Algorithms",
+    task_name="DQN",
+    task_type=TaskTypes.training,
+    tags=["env:cartpole-v1", "rl"],
+    auto_connect_frameworks={"tensorboard": True, "matplotlib": True, "pytorch": True},
+)
 env = gym.make("CartPole-v1")
 state, info = env.reset()
 n_actions = env.action_space.n
