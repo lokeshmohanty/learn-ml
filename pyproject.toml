@@ -16,5 +16,6 @@ dependencies = [
     "optax>=0.2.4",
     "pandas>=2.2.3",
     "seaborn>=0.13.2",
+    "tensorboard>=2.19.0",
     "torch>=2.7.0",
 ]
